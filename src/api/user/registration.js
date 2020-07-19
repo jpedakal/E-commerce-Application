@@ -6,8 +6,8 @@ const mongo = require('../../database/mongo_db');
 
 router.post('/register', (req, res) => {
 
-    const data= req.body;
-    /* const data = {
+  const data= req.body;
+  /* const data = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         email: req.body.email,
@@ -23,15 +23,15 @@ router.post('/register', (req, res) => {
         update_ts: new Date()
     }; */
 
-    bcrypt.genSalt(saltRounds)
-        .then(salt => bcrypt.hash(data.password, salt)
-            .then(hash => {
-                data.password = hash,
-                mongo.insertDocuments('user', data)
-                    .then(data => res.status(200).json(data))
-                    .catch(err => res.json(err));
-            })
-        );
+  bcrypt.genSalt(saltRounds)
+    .then(salt => bcrypt.hash(data.password, salt)
+      .then(hash => {
+        data.password = hash,
+        mongo.insertDocuments('user', data)
+          .then(data => res.status(200).json(data))
+          .catch(err => res.json(err));
+      })
+    );
 });
 
 module.exports = router;

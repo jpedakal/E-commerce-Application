@@ -21,15 +21,15 @@ module.exports = {
     'linebreak-style': [
       'error',
       'windows'
-        ],
-        'quotes': [
-            'warn',
-            'single'
-        ],
-        'semi': [
-            'warn',
-            'always'
-        ],
-        'no-unused-vars':'warn'
-    }
+    ],
+    'quotes': [
+      'warn',
+      'single'
+    ],
+    'semi': [
+      'warn',
+      'always'
+    ],
+    'no-unused-vars':'warn'
+  }
 };

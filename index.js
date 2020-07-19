@@ -53,9 +53,9 @@ app.use(morgan('dev'));
 //app.use(hsts({ maxAge: 86400 })); // enforces secure (HTTP over SSL/TLS) connections to the server
 //app.use(nocahe()); // To disable client-side caching
 app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
-    next();
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+  next();
 });
 
 // swagger file
@@ -86,7 +86,7 @@ var server = http.createServer(app).listen(Port);
 
 // Connect to Database
 try {
-    mongo.connect();
+  mongo.connect();
 } catch (err) {
-    console.log('error while connecting database');
+  console.log('error while connecting database');
 }

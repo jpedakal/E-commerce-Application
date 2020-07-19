@@ -7,16 +7,16 @@ const isAdmin = require('../../config/admin');
 
 router.post('/update_product', passport.authenticate('jwt', { session: false }), isAdmin, (req, res) => {
 
-    const filterCondition = {
-        _id: ObjectId(req.params.id)
-    };
+  const filterCondition = {
+    _id: ObjectId(req.params.id)
+  };
 
-    const payload = req.body;
-    payload.update_ts = new Date();
+  const payload = req.body;
+  payload.update_ts = new Date();
 
-    mongo.updateDocument('products', filterCondition, payload)
-        .then(data => res.status(200).json(data))
-        .catch(err => res.json(err));
+  mongo.updateDocument('products', filterCondition, payload)
+    .then(data => res.status(200).json(data))
+    .catch(err => res.json(err));
 });
 
 module.exports = router;
