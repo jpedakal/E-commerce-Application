@@ -5,11 +5,11 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
-const helmet = require('helmet');
+//const helmet = require('helmet');
 const fs = require('fs');
 const http = require('http');
-const hsts = require('hsts');
-const nocahe = require('nocache');
+//const hsts = require('hsts');
+//const nocahe = require('nocache');
 require('dotenv').config();
 
 require('./src/config/passport')(passport);
@@ -19,10 +19,10 @@ const mongo = require('./src/database/mongo_db');
 
 var privateKey = fs.readFileSync(__dirname+'/ssl/server.key');
 var certificate = fs.readFileSync(__dirname+'/ssl/server.crt');
-var options = {
-  key: privateKey,
-  cert: certificate
-};
+// var options = {
+//   key: privateKey,
+//   cert: certificate
+// };
 
 // route files
 const seller_register = require('./src/api/seller/registration');
@@ -82,7 +82,7 @@ app.use('/',artistbyId);
 
 // Start server
 const Port = process.env.PORT || 8000;
-var server = http.createServer(app).listen(Port);
+//var server = http.createServer(app).listen(Port);
 
 // Connect to Database
 try {
