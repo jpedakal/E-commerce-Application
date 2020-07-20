@@ -20,8 +20,8 @@ const mongo = require('./src/database/mongo_db');
 var privateKey = fs.readFileSync(__dirname+'/ssl/server.key');
 var certificate = fs.readFileSync(__dirname+'/ssl/server.crt');
 var options = {
-    key: privateKey,
-    cert: certificate
+  key: privateKey,
+  cert: certificate
 };
 
 // route files
