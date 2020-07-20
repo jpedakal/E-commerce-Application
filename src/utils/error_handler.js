@@ -1,0 +1,3 @@
+exports.errHandler= function(err){
+
+}
