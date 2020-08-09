@@ -74,6 +74,9 @@ app.use('/', welcome);
 // Start server
 const Port = process.env.PORT || 8000;
 //var server = http.createServer(app).listen(Port);
+app.listen(Port,()=>{
+  console.log("Server started on port",Port)
+})
 
 // Connect to Database
 try {
