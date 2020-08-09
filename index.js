@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+//const swaggerDocument = require('./swagger.json');
 //const helmet = require('helmet');
 const fs = require('fs');
 const http = require('http');
@@ -17,8 +17,8 @@ require('./src/config/passport')(passport);
 // Database connection
 const mongo = require('./src/database/mongo_db');
 
-var privateKey = fs.readFileSync(__dirname+'/ssl/server.key');
-var certificate = fs.readFileSync(__dirname+'/ssl/server.crt');
+//var privateKey = fs.readFileSync(__dirname+'/ssl/server.key');
+//var certificate = fs.readFileSync(__dirname+'/ssl/server.crt');
 // var options = {
 //   key: privateKey,
 //   cert: certificate
@@ -77,8 +77,6 @@ app.use('/api/user', cart_data);
 app.use('/api/user', purchase);
 app.use('/api/seller', reset_pwd);
 app.use('/', welcome);
-app.use('/',artist);
-app.use('/',artistbyId);
 
 // Start server
 const Port = process.env.PORT || 8000;
