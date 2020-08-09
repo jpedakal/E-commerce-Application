@@ -40,8 +40,6 @@ const update_pwd = require('./src/api/seller/update_pwd');
 const reset_pwd = require('./src/api/seller/reset_pwd');
 const purchase = require('./src/api/user/purchase');
 const welcome = require('./src/api/user/welcome');
-const artist = require('./src/api/artists/artist');
-const artistbyId= require('./src/api/artists/artist_by_id');
 
 // middleware
 app.use(bodyParser.json());
@@ -57,9 +55,6 @@ app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
   next();
 });
-
-// swagger file
-app.use('/apidocs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // middleware routes
 app.use('/api/seller', seller_register);
