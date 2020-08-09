@@ -79,5 +79,5 @@ const Port = process.env.PORT || 8000;
 try {
   mongo.connect();
 } catch (err) {
-  console.log('error while connecting database');
+  console.log('error while connecting database',err);
 }

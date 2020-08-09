@@ -16,7 +16,7 @@ var db_options = {
 };
 
 function connect() {
-  const filePath = '.././code/vault.json';
+  const filePath = './vault.json';
   const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
   const url = json.MongoDB.mongoURL;
   const dbName = json.MongoDB.dbname;
