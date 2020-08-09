@@ -3,7 +3,6 @@ const passport = require('passport');
 const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-const swaggerUi = require('swagger-ui-express');
 //const swaggerDocument = require('./swagger.json');
 //const helmet = require('helmet');
 const fs = require('fs');
