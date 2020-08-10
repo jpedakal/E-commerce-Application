@@ -44,7 +44,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(morgan('dev'));
+app.use(morgan('combined'));
 //app.use(helmet.hidePoweredBy()); // Disable x-powered-by
 //app.use(hsts({ maxAge: 86400 })); // enforces secure (HTTP over SSL/TLS) connections to the server
 //app.use(nocahe()); // To disable client-side caching
