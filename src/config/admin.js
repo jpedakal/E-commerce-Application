@@ -6,3 +6,4 @@ module.exports = (req, res, next) => {
     res.status(403).json({message: 'You donot have permission to add product. Please contact administrator'});
   }
 };
+
