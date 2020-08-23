@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const mongo = require('../../database/mongo_db');
 
-
 router.post('/login', (req, res) => {
   const payload = {
     mobile: req.body.mobile,
