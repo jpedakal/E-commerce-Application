@@ -3,7 +3,7 @@ const router = express.Router();
 const mongo = require('../../database/mongo_db');
 const validation = require('../../utils/validator');
 const rateLimit = require('express-rate-limit');
-const errorHandler= require('../../utils/exceptionHandler');
+const exceptionHandler= require('../../utils/exceptionHandler');
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -22,7 +22,7 @@ router.post('/login', apiLimiter, (req, res) => {
   } else {
     mongo.authentication('user', payload)
       .then(data => res.status(200).json(data))
-      .catch(err => res.status(401).json(err));
+      .catch(err => res(exceptionHandler.errorHandler(err)));
   }
 });
 
