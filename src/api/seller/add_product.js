@@ -54,5 +54,4 @@ router.post('/add_product', upload.single('productImage'), passport.authenticate
   }
 });
 
-
 module.exports = router;
