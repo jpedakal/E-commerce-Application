@@ -1,4 +1,4 @@
-exports.exceptionHandler = function (err) {
+exports.errorHandler = function (err) {
     let status = err.httpStatusCode;
     if (status === 404) {
         return `Unable to connect to target application,  please try after sometime!`

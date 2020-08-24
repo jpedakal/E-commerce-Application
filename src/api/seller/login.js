@@ -3,6 +3,7 @@ const router = express.Router();
 const mongo = require('../../database/mongo_db');
 const validation = require('../../utils/validator');
 const rateLimit = require('express-rate-limit');
+const errorHandler= require('../../utils/exceptionHandler');
 
 const apiLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
