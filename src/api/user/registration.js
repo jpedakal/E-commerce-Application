@@ -8,15 +8,15 @@ router.post('/register', (req, res) => {
 
   // const data= req.body;
   const data = {
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
     email: req.body.email,
     cpf: req.body.cpf,
     role: 0,
     cart: [],
     past_orders: [],
     gender: req.body.gender,
-    date_of_birth: req.body.date_of_birth,
+    dateOfBirth: req.body.dateOfBirth,
     mobile: req.body.mobile,
     password: req.body.password,
     create_ts: new Date(),
