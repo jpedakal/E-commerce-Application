@@ -76,7 +76,7 @@ let authentication = function (collectionName, payload) {
   });
 };
 
-var updateDocument = function (collectionName, filterConditon, updatePayload) {
+let updateDocument = function (collectionName, filterConditon, updatePayload) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
     collection.updateOne(filterConditon, { $set: updatePayload })
@@ -85,7 +85,7 @@ var updateDocument = function (collectionName, filterConditon, updatePayload) {
   });
 };
 
-var deleteDocument = function (collectionName, filterConditon) {
+let deleteDocument = function (collectionName, filterConditon) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
     collection.deleteOne(filterConditon)
@@ -94,7 +94,7 @@ var deleteDocument = function (collectionName, filterConditon) {
   });
 };
 
-var findDocumentsById = function (collectionName, filterConditon) {
+let findDocumentsById = function (collectionName, filterConditon) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
     collection.findOne(filterConditon)
