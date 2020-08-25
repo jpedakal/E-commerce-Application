@@ -13,3 +13,4 @@ router.get('/fetch_product/:model', (req, res) => {
 });
 
 module.exports = router;
+
