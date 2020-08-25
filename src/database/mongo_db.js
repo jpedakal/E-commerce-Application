@@ -33,7 +33,7 @@ function connect() {
   }
 }
 
-var insertDocuments = function (collectionName, document) {
+let insertDocuments = function (collectionName, document) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
     collection.insertOne(document)
@@ -42,7 +42,7 @@ var insertDocuments = function (collectionName, document) {
   });
 };
 
-var findDocuments = function (collectionName, payload) {
+let findDocuments = function (collectionName, payload) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
     collection.find(payload).toArray()
@@ -51,7 +51,7 @@ var findDocuments = function (collectionName, payload) {
   });
 };
 
-var authentication = function (collectionName, payload) {
+let authentication = function (collectionName, payload) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
     const error = {
