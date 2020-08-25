@@ -103,7 +103,6 @@ let findDocumentsById = function (collectionName, filterConditon) {
   });
 };
 
-
 exports.connect = connect;
 exports.insertDocuments = insertDocuments;
 exports.findDocuments = findDocuments;
