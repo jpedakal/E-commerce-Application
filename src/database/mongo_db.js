@@ -2,6 +2,7 @@ const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
+const { resolve } = require('path');
 const secret = process.env.SECRET;
 
 let myDB;
@@ -103,6 +104,18 @@ let findDocumentsById = function (collectionName, filterConditon) {
   });
 };
 
+let deleteCartItem = function (collectionName, filterConditon) {
+  return new Promise((resolve, reject) => {
+    const collection = myDB.collection(collectionName);
+    collection.findOne(filterConditon)
+      .then(data => {
+        if (data) {
+          console.log("data --", data)
+        }
+      })
+  })
+}
+
 exports.connect = connect;
 exports.insertDocuments = insertDocuments;
 exports.findDocuments = findDocuments;
@@ -110,3 +123,4 @@ exports.findDocumentsById = findDocumentsById;
 exports.updateDocument = updateDocument;
 exports.deleteDocument = deleteDocument;
 exports.authentication = authentication;
+exports.deleteCartItem = deleteCartItem;

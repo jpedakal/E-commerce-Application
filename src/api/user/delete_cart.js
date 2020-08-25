@@ -3,7 +3,7 @@ const router = express.Router();
 const mongo = require('../../database/mongo_db');
 const passport = require('passport');
 
-router.get('/cart_data', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.delete('/delete_cart', passport.authenticate('jwt', { session: false }), (req, res) => {
   
   const payload = {cpf: req.user[0].cpf};
   mongo.findDocuments('user', payload)
