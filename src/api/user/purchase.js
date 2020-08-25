@@ -33,9 +33,10 @@ router.post('/purchase', passport.authenticate('jwt', { session: false }), (req,
       amount: req.body.total_amount,
       currency: 'INR',
       customer: customer.id
-    }).then(payment =>
-      order_data.invoice = payment.receipt_url,
+    }).then(data =>
+      order_data.invoice = data.receipt_url,
       order_data.ordered_on = new Date(),
+      console.log('order data', data),
       mongo.findDocuments('user', FilterCondition)
         .then(data => {
           // const new_orders = data[0].past_orders.push(order_data);
