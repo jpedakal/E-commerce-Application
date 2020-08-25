@@ -104,15 +104,12 @@ let findDocumentsById = function (collectionName, filterConditon) {
   });
 };
 
-let deleteCartItem = function (collectionName, filterConditon) {
+let deleteCartItem = function (collectionName, filterConditon, title) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
-    collection.findOne(filterConditon)
-      .then(data => {
-        if (data) {
-          console.log("data --", data)
-        }
-      })
+    collection.findOneAndUpdate(filterConditon, { "$pull": { "cart": { "title": title } } }, { new: true })
+      .then(data => resolve(data))
+      .catch(err => reject(err));
   })
 }
 
