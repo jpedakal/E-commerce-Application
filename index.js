@@ -37,6 +37,7 @@ const cart_data = require('./src/api/user/cart_data');
 const update_pwd = require('./src/api/seller/update_pwd');
 const reset_pwd = require('./src/api/seller/reset_pwd');
 const purchase = require('./src/api/user/purchase');
+const delete_cart= require('./src/api/user/delete_cart');
 const welcome = require('./src/api/user/welcome');
 
 // middleware
@@ -69,6 +70,7 @@ app.use('/api/user', add_to_cart);
 app.use('/api/user', cart_data);
 app.use('/api/user', purchase);
 app.use('/api/seller', reset_pwd);
+app.use('/api/user',delete_cart)
 app.use('/', welcome);
 
 // Start server

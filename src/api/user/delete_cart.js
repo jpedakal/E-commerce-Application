@@ -6,7 +6,7 @@ const passport = require('passport');
 router.delete('/delete_cart', passport.authenticate('jwt', { session: false }), (req, res) => {
   
   const payload = {cpf: req.user[0].cpf};
-  mongo.findDocuments('user', payload)
+  mongo.deleteCartItem('user', payload)
     .then(data=> res.status(200).json(data[0].cart))
     .catch(err=> res.json(err));
 }); 
