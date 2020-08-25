@@ -31,7 +31,7 @@ function connect() {
       console.log('Database connected successfully');
     });
   }
-}
+};
 
 let insertDocuments = function (collectionName, document) {
   return new Promise((resolve, reject) => {
