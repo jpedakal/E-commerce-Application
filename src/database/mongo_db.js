@@ -4,9 +4,9 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const secret = process.env.SECRET;
 
-var myDB;
+let myDB;
 
-var db_options = {
+let db_options = {
   db: {
     raw: false
   },
