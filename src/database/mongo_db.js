@@ -90,7 +90,7 @@ let updateDocument = function (collectionName, filterConditon, updatePayload) {
 let updateHistory = function (collectionName, filterConditon, updatePayload) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
-    collection.update(filterConditon, { $push: updatePayload })
+    collection.update(filterConditon, { $push: { past_orders: updatePayload } })
       .then(doc => resolve(doc))
       .catch(err => reject(err));
   })

@@ -38,7 +38,7 @@ router.post('/purchase', passport.authenticate('jwt', { session: false }), (req,
       mongo.findDocuments('user', FilterCondition)
         .then(data => {
           console.log("data", data);
-          mongo.updateDocument('user', FilterCondition, { past_orders: order_data })
+          mongo.updateDocument('user', FilterCondition, order_data )
             .then(result => res.status(200).json(result))
             .catch(err => res.json(err));
         }))
