@@ -51,18 +51,6 @@ let findDocuments = function (collectionName, payload) {
   });
 };
 
-let findHistory = function (collectionName, payload) {
-  return new Promise((resolve, reject) => {
-    const collection = myDB.collection(collectionName);
-    collection.find(payload)
-      .then(doc => {
-        let output = doc.past_orders;
-        resolve(output)
-      })
-      .catch(err => reject(err));
-  });
-};
-
 let findDocumentsById = function (collectionName, filterConditon) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
@@ -140,7 +128,6 @@ exports.findDocuments = findDocuments;
 exports.findDocumentsById = findDocumentsById;
 exports.updateDocument = updateDocument;
 exports.updateHistory = updateHistory;
-exports.findHistory = findHistory;
 exports.deleteDocument = deleteDocument;
 exports.authentication = authentication;
 exports.deleteCartItem = deleteCartItem;
