@@ -39,6 +39,7 @@ const reset_pwd = require('./src/api/seller/reset_pwd');
 const purchase = require('./src/api/user/purchase');
 const delete_cart = require('./src/api/user/delete_cart');
 const past_orders = require('./src/api/user/past_orders');
+const updateUser_info = require('./src/api/user/update_info');
 const welcome = require('./src/api/user/welcome');
 
 // middleware
@@ -73,6 +74,7 @@ app.use('/api/user', purchase);
 app.use('/api/seller', reset_pwd);
 app.use('/api/user', delete_cart);
 app.use('/api/user', past_orders);
+app.use('/api/user', updateUser_info);
 app.use('/', welcome);
 
 // Start server
