@@ -52,6 +52,15 @@ let findDocuments = function (collectionName, payload) {
   });
 };
 
+let findDocumentsById = function (collectionName, filterConditon) {
+  return new Promise((resolve, reject) => {
+    const collection = myDB.collection(collectionName);
+    collection.findOne(filterConditon)
+      .then(doc => resolve(doc))
+      .catch(err => reject(err));
+  });
+};
+
 let authentication = function (collectionName, payload) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
@@ -100,15 +109,6 @@ let deleteDocument = function (collectionName, filterConditon) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
     collection.deleteOne(filterConditon)
-      .then(doc => resolve(doc))
-      .catch(err => reject(err));
-  });
-};
-
-let findDocumentsById = function (collectionName, filterConditon) {
-  return new Promise((resolve, reject) => {
-    const collection = myDB.collection(collectionName);
-    collection.findOne(filterConditon)
       .then(doc => resolve(doc))
       .catch(err => reject(err));
   });
