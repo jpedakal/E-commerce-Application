@@ -4,7 +4,6 @@ const passport = require('passport');
 const stripe = require('stripe')(process.env.SECRET_KEY);
 const mongo = require('../../database/mongo_db');
 
-
 router.post('/purchase', passport.authenticate('jwt', { session: false }), (req, res) => {
 
   const order_data = {
