@@ -24,7 +24,6 @@ router.post('/purchase', passport.authenticate('jwt', { session: false }), (req,
       cvc: req.body.cvc
     }
   }).then(token => {
-    console.log('tokenId', token.id)
     stripe.customers.create({
       email: req.body.email,
       source: token.id
@@ -32,18 +31,13 @@ router.post('/purchase', passport.authenticate('jwt', { session: false }), (req,
       amount: req.body.total_amount,
       currency: 'INR',
       customer: customer.id
-    }).then(data =>
-     // order_data.invoice = data.receipt_url,
-      order_data.ordered_on = new Date(),
-      mongo.findDocuments('user', FilterCondition)
-        .then(data => {
-          console.log("data", data);
-          mongo.updateDocument('user', FilterCondition, order_data )
-            .then(result => res.status(200).json(result))
-            .catch(err => res.json(err));
-        }))
-    );
-  });
+    }).then(data => {
+      mongo.updateHistory('user', FilterCondition, order_data)
+        .then(result => res.status(200).json(result))
+        .catch(err => res.json(err));
+    })
+    )
+  })
 });
 
 module.exports = router;

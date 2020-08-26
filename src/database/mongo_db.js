@@ -128,6 +128,7 @@ exports.insertDocuments = insertDocuments;
 exports.findDocuments = findDocuments;
 exports.findDocumentsById = findDocumentsById;
 exports.updateDocument = updateDocument;
+exports.updateHistory = updateHistory;
 exports.deleteDocument = deleteDocument;
 exports.authentication = authentication;
 exports.deleteCartItem = deleteCartItem;
