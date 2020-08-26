@@ -33,13 +33,12 @@ router.post('/purchase', passport.authenticate('jwt', { session: false }), (req,
       currency: 'INR',
       customer: customer.id
     }).then(data =>
-      order_data.invoice = data.receipt_url,
+     // order_data.invoice = data.receipt_url,
       order_data.ordered_on = new Date(),
-      console.log('order data', data),
       mongo.findDocuments('user', FilterCondition)
         .then(data => {
-          // const new_orders = data[0].past_orders.push(order_data);
-          mongo.updateDocument('user', FilterCondition, { past_orders: data[0].past_orders })
+          console.log("data", data);
+          mongo.updateDocument('user', FilterCondition, { past_orders: order_data })
             .then(result => res.status(200).json(result))
             .catch(err => res.json(err));
         }))

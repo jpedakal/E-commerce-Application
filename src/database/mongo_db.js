@@ -80,11 +80,21 @@ let authentication = function (collectionName, payload) {
 let updateDocument = function (collectionName, filterConditon, updatePayload) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
+    console.log("updatePayload", updatePayload)
     collection.updateOne(filterConditon, { $set: updatePayload })
       .then(doc => resolve(doc))
       .catch(err => reject(err));
   });
 };
+
+let updateHistory = function (collectionName, filterConditon, updatePayload) {
+  return new Promise((resolve, reject) => {
+    const collection = myDB.collection(collectionName);
+    collection.update(filterConditon, { $set: updatePayload })
+      .then(doc => resolve(doc))
+      .catch(err => reject(err));
+  })
+}
 
 let deleteDocument = function (collectionName, filterConditon) {
   return new Promise((resolve, reject) => {
