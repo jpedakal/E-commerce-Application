@@ -94,7 +94,7 @@ let updateHistory = function (collectionName, filterConditon, updatePayload) {
       .then(doc => resolve(doc))
       .catch(err => reject(err));
   })
-}
+};
 
 let deleteDocument = function (collectionName, filterConditon) {
   return new Promise((resolve, reject) => {
