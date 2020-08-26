@@ -2,7 +2,6 @@ const { MongoClient } = require('mongodb');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
-const { resolve } = require('path');
 const secret = process.env.SECRET;
 
 let myDB;
