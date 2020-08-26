@@ -37,7 +37,8 @@ const cart_data = require('./src/api/user/cart_data');
 const update_pwd = require('./src/api/seller/update_pwd');
 const reset_pwd = require('./src/api/seller/reset_pwd');
 const purchase = require('./src/api/user/purchase');
-const delete_cart= require('./src/api/user/delete_cart');
+const delete_cart = require('./src/api/user/delete_cart');
+const past_orders = require('./src/api/user/past_orders');
 const welcome = require('./src/api/user/welcome');
 
 // middleware
@@ -45,7 +46,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(morgan({format: 'POST body length in bytes :req[Content-Length]', immediate: true}))
+app.use(morgan({ format: 'POST body length in bytes :req[Content-Length]', immediate: true }))
 //app.use(helmet.hidePoweredBy()); // Disable x-powered-by
 //app.use(hsts({ maxAge: 86400 })); // enforces secure (HTTP over SSL/TLS) connections to the server
 //app.use(nocahe()); // To disable client-side caching
@@ -70,19 +71,20 @@ app.use('/api/user', add_to_cart);
 app.use('/api/user', cart_data);
 app.use('/api/user', purchase);
 app.use('/api/seller', reset_pwd);
-app.use('/api/user',delete_cart)
+app.use('/api/user', delete_cart);
+app.use('/api/user', past_orders);
 app.use('/', welcome);
 
 // Start server
 const Port = process.env.PORT || 8000;
 //var server = http.createServer(app).listen(Port);
-app.listen(Port,()=>{
-  console.log("Server started on port",Port)
+app.listen(Port, () => {
+  console.log("Server started on port", Port)
 })
 
 // Connect to Database
 try {
   mongo.connect();
 } catch (err) {
-  console.log('error while connecting database',err);
+  console.log('error while connecting database', err);
 }
