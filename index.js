@@ -2,7 +2,6 @@ const express = require('express');
 const passport = require('passport');
 const app = express();
 const bodyParser = require('body-parser');
-const morgan = require('morgan');
 //const helmet = require('helmet');
 const fs = require('fs');
 const http = require('http');
@@ -47,7 +46,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(morgan({ format: 'POST body length in bytes :req[Content-Length]', immediate: true }))
 //app.use(helmet.hidePoweredBy()); // Disable x-powered-by
 //app.use(hsts({ maxAge: 86400 })); // enforces secure (HTTP over SSL/TLS) connections to the server
 //app.use(nocahe()); // To disable client-side caching
