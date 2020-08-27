@@ -19,8 +19,9 @@ router.post('/register', (req, res) => {
     dateOfBirth: req.body.dateOfBirth,
     mobile: req.body.mobile,
     password: req.body.password,
-    create_ts: new Date(),
-    update_ts: new Date()
+    address: req.body.address,
+    create_ts:  Date(),
+    update_ts:  Date()
   };
 
   bcrypt.genSalt(saltRounds)
@@ -28,7 +29,7 @@ router.post('/register', (req, res) => {
       .then(hash => {
         data.password = hash,
           mongo.insertDocuments('user', data)
-            .then(data => res.status(200).json(data))
+            .then(data => res.json({"message":"Registered successfully"}))
             .catch(err => res.json(err));
       })
     );
