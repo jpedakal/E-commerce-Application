@@ -19,19 +19,27 @@ router.post('/register', (req, res) => {
     mobile: req.body.mobile,
     password: req.body.password,
     address: req.body.address,
-    create_ts:  Date(),
-    update_ts:  Date()
+    create_ts: Date(),
+    update_ts: Date()
   };
 
-  bcrypt.genSalt(saltRounds)
-    .then(salt => bcrypt.hash(data.password, salt)
-      .then(hash => {
-        data.password = hash,
-          mongo.insertDocuments('user', data)
-            .then(data => res.json({"message":"Registered successfully"}))
-            .catch(err => res.json(err));
-      })
-    );
+  const filterCondition = { "mobile": req.body.mobile };
+  mongo.findDocumentsById('user', filterCondition)
+    .then(doc => {
+      if (doc) {
+        res.json({ "message": "UserId already registered" })
+      } else {
+        bcrypt.genSalt(saltRounds)
+          .then(salt => bcrypt.hash(data.password, salt)
+            .then(hash => {
+              data.password = hash,
+                mongo.insertDocuments('user', data)
+                  .then(data => res.json({ "message": "Registered successfully" }))
+                  .catch(err => res.json(err));
+            })
+          );
+      }
+    })
 });
 
 module.exports = router;
