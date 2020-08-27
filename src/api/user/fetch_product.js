@@ -7,7 +7,7 @@ router.get('/product_info', (req, res) => {
     id: req.query.id
   };
 
-  mongo.findDocuments('products', FilterCondition)
+  mongo.findDocuments('product', FilterCondition)
     .then(data => res.status(200).json(data))
     .catch(err => res.status(404).json(err));
 });
