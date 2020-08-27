@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const mongo = require('../../database/mongo_db');
 
-router.get('/fetch_product/:model', (req, res) => {
+router.get('/product_info', (req, res) => {
   const FilterCondition = {
-    model: req.params.model
+    id: req.query.id
   };
 
   mongo.findDocuments('products', FilterCondition)
