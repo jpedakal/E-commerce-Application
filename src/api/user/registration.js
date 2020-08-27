@@ -6,7 +6,6 @@ const mongo = require('../../database/mongo_db');
 
 router.post('/register', (req, res) => {
 
-  // const data= req.body;
   const data = {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
