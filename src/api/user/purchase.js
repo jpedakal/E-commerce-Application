@@ -7,9 +7,11 @@ const mongo = require('../../database/mongo_db');
 router.post('/purchase', passport.authenticate('jwt', { session: false }), (req, res) => {
 
   const order_data = {
-    model: req.body.model,
+    id: req.body._id,
+    title: req.body.title,
     quantity: req.body.quantity,
-    offer_price: req.body.offer_price
+    price: req.body.price,
+    purchased_on: Date()
   };
 
   const FilterCondition = {
