@@ -60,6 +60,15 @@ let findDocumentsById = function (collectionName, filterConditon) {
   });
 };
 
+let findarrayDocument = function (collectionName, filterConditon) {
+  return new Promise((resolve, reject) => {
+    const collection = myDB.collection(collectionName);
+    collection.findOne(filterConditon)
+      .then(doc => resolve(doc))
+      .catch(err => reject(err));
+  })
+};
+
 let authentication = function (collectionName, payload) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
@@ -125,6 +134,7 @@ exports.connect = connect;
 exports.insertDocuments = insertDocuments;
 exports.findDocuments = findDocuments;
 exports.findDocumentsById = findDocumentsById;
+exports.findarrayDocument = findarrayDocument;
 exports.updateDocument = updateDocument;
 exports.updateHistory = updateHistory;
 exports.deleteDocument = deleteDocument;

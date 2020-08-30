@@ -4,9 +4,10 @@ const mongo = require('../../database/mongo_db');
 const passport = require('passport');
 
 router.get('/past_orders', passport.authenticate('jwt', { session: false }), (req, res) => {
-    const filterCondition = { cpf: req.user[0].cpf }
+    let filterCondition = { cpf: req.user[0].cpf }
     if (req.query.id) {
-        mongo.findDocumentsById('user', filterCondition)
+        let payload = { past_orders: { $elemMatch: { id: req.query.id } } }
+        mongo.findDocumentsById('user', filterCondition, payload)
             .then(doc => {
                 res.json(doc);
             })
