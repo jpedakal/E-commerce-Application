@@ -63,7 +63,7 @@ let findDocumentsById = function (collectionName, filterConditon) {
 let findarrayDocument = function (collectionName, cpf, id) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
-    collection.findOne({ cpf: cpf },{ past_orders: { $elemMatch: { id: id } } })
+    collection.findOne({ 'past_orders.id': id  })
       .then(doc => {
         resolve(doc)
       })
