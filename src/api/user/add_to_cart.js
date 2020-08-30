@@ -9,9 +9,9 @@ router.post('/add_to_cart', passport.authenticate('jwt', { session: false }), (r
   const FilterCondition = { cpf: req.user[0].cpf };
   mongo.findDocuments('user', FilterCondition)
     .then(data => {
-      var new_cart = data[0].cart.push(payload);
+      data[0].cart.push(payload);
       mongo.updateDocument('user', FilterCondition, { cart: data[0].cart })
-        .then(item => res.status(200).json(item))
+        .then(item => res.json({ "message": "product added to cart successfully" }))
         .catch(err => res.json(err));
     });
 });
