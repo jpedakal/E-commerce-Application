@@ -4,11 +4,28 @@ const mongo = require('../../database/mongo_db');
 const passport = require('passport');
 
 router.get('/cart_data', passport.authenticate('jwt', { session: false }), (req, res) => {
-  
-  const payload = {cpf: req.user[0].cpf};
-  mongo.findDocuments('user', payload)
-    .then(data=> res.status(200).json(data[0].cart))
-    .catch(err=> res.json(err));
-}); 
+
+  let filterCondition = { cpf: req.user[0].cpf }
+
+  if (req.query.id) {
+    mongo.findDocuments('user', filterCondition)
+      .then(doc => {
+        let data = doc[0].cart;
+        for (let i = 0; i < data.length; i++) {
+          if (data[i].id === req.query.id) {
+            res.json(data[i])
+          } else continue
+        }
+      })
+      .catch(err => res.json(err));
+  } else {
+    mongo.findDocuments('user', filterCondition)
+      .then(data => {
+        let output = data[0].cart;
+        res.json(output)
+      })
+      .catch(err => res.json(err));
+  }
+});
 
 module.exports = router;
