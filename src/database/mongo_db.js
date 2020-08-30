@@ -60,10 +60,10 @@ let findDocumentsById = function (collectionName, filterConditon) {
   });
 };
 
-let findarrayDocument = function (collectionName, cpf, id) {
+let findArrayDocument = function (collectionName, cpf, id, title) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
-    collection.findOne({ {cpf: c}  })
+    collection.findOne({cpf: cpf},{ past_orders: { $elemMatch: { id: id, title: title } } })
       .then(doc => {
         resolve(doc)
       })
@@ -136,7 +136,7 @@ exports.connect = connect;
 exports.insertDocuments = insertDocuments;
 exports.findDocuments = findDocuments;
 exports.findDocumentsById = findDocumentsById;
-exports.findarrayDocument = findarrayDocument;
+exports.findArrayDocument = findArrayDocument;
 exports.updateDocument = updateDocument;
 exports.updateHistory = updateHistory;
 exports.deleteDocument = deleteDocument;

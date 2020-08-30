@@ -6,7 +6,7 @@ const passport = require('passport');
 router.get('/past_orders', passport.authenticate('jwt', { session: false }), (req, res) => {
     let filterCondition = { cpf: req.user[0].cpf }
     if (req.query.id) {
-        mongo.findarrayDocument('user', req.user[0].cpf, req.query.id)
+        mongo.findArrayDocument('user', req.user[0].cpf, req.query.id, req.query.title)
             .then(doc => {
                 res.json(doc);
             })
