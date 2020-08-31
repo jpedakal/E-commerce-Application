@@ -5,15 +5,18 @@ const passport = require('passport');
 
 router.post('/product_rating', passport.authenticate('jwt', { session: false }), (req, res) => {
     const payload = {
-        id: req.body._id,
         rating: req.body.rating,
         review: req.body.review
     };
-    const filterCondition = { cpf: req.user[0].cpf }
-    mongo.findDocuments('user', filterCondition)
-        .then(doc => {
-
-        })
+    const filterCondition = { id: req.query._id }
+    mongo.findDocuments('product', filterCondition)
+        .then(data => {
+            console.log(data);
+            data[0].comments.push(payload);
+            mongo.updateDocument('user', FilterCondition, { cart: data[0].cart })
+                .then(item => res.json({ "message": "product added to cart successfully" }))
+                .catch(err => res.json(err));
+        });
 });
 
 module.exports = router;
