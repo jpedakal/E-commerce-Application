@@ -13,8 +13,8 @@ router.post('/product_rating', passport.authenticate('jwt', { session: false }),
         .then(data => {
             console.log(data);
             data[0].comments.push(payload);
-            mongo.updateDocument('user', FilterCondition, { cart: data[0].cart })
-                .then(item => res.json({ "message": "product added to cart successfully" }))
+            mongo.updateDocument('user', FilterCondition, { comments: data[0].comments })
+                .then(item => res.json({ "message": "Added rating and review successfully" }))
                 .catch(err => res.json(err));
         });
 });
