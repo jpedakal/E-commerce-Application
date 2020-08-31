@@ -76,7 +76,7 @@ app.use('/api/user', delete_cart);
 app.use('/api/user', past_orders);
 app.use('/api/user', updateUser_info);
 app.use('/api/user', product_rating);
-app.use('/app/user', product_rat);
+app.use('/api/user', product_rat);
 app.use('/', welcome);
 
 // Start server

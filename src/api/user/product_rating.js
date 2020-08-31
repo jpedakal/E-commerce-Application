@@ -3,17 +3,21 @@ const router = express.Router();
 const mongo = require('../../database/mongo_db');
 const passport = require('passport');
 
-router.post('/product_rating', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.post('/product_rating/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
+    console.log('requser', req.user[0])
     const payload = {
         rating: req.body.rating,
-        review: req.body.review
+        review: req.body.review,
+        user: req.user[0].name,
+        create_ts: Date()
     };
-    const filterCondition = { id: req.query._id }
-    mongo.findDocuments('product', filterCondition)
+    const filterCondition = { _id: req.params.id }
+    mongo.findDocumentsById('product', filterCondition)
         .then(data => {
             console.log(data);
-            data[0].comments.push(payload);
-            mongo.updateDocument('user', FilterCondition, { comments: data[0].comments })
+            data.comments.push(payload);
+            console.log(data.comments);
+            mongo.updateDocument('product', filterCondition, { comments: data.comments })
                 .then(item => res.json({ "message": "Added rating and review successfully" }))
                 .catch(err => res.json(err));
         });
