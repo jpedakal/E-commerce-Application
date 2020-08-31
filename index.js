@@ -74,6 +74,7 @@ app.use('/api/seller', reset_pwd);
 app.use('/api/user', delete_cart);
 app.use('/api/user', past_orders);
 app.use('/api/user', updateUser_info);
+app.use('/api/user', product_rating);
 app.use('/', welcome);
 
 // Start server
