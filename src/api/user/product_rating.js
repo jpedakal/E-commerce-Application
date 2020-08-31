@@ -4,7 +4,7 @@ const mongo = require('../../database/mongo_db');
 const passport = require('passport');
 
 router.post('/product_rating/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
-    console.log('requser', req.user[0])
+
     const payload = {
         rating: req.body.rating,
         review: req.body.review,
