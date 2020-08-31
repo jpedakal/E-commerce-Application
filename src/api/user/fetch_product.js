@@ -19,4 +19,3 @@ router.get('/product_info', (req, res) => {
 });
 
 module.exports = router;
-
