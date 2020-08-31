@@ -13,11 +13,11 @@ router.get('/product_rating', (req, res) => {
             let data = doc[0].past_orders;
             for (let i = 0; i < data.length; i++) {
                 if (data[i].id === productId) {
-                    res.json(data[i])
+                    res.json({"success": "true"});
                 } else if (i == data.length - 1) {
                     continue;
                 } else {
-                    res.json({ "message": "Sorry! you haven't purchased this product" })
+                    res.json({ "message": "Sorry! you haven't purchased this product" });
                 }
             }
         })
