@@ -14,7 +14,8 @@ router.get('/product_rating', passport.authenticate('jwt', { session: false }), 
             for (let i = 0; i < data.length; i++) {
                 if (data[i].id === productId) {
                     res.json({ "success": "true" });
-                } else if (i == data.length - 1) {
+                    break;
+                } else if (i !== data.length - 1) {
                     continue;
                 } else {
                     res.json({ "message": "Sorry! you haven't purchased this product" });
