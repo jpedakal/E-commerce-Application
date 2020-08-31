@@ -3,7 +3,7 @@ const router = express.Router();
 const mongo = require('../../database/mongo_db');
 const passport = require('passport');
 
-router.get('/product_rating', (req, res) => {
+router.get('/product_rating', passport.authenticate('jwt', { session: false }), (req, res) => {
 
     const productId = req.query._id;
     const filterCondition = { cpf: req.user[0].cpf }
@@ -13,7 +13,7 @@ router.get('/product_rating', (req, res) => {
             let data = doc[0].past_orders;
             for (let i = 0; i < data.length; i++) {
                 if (data[i].id === productId) {
-                    res.json({"success": "true"});
+                    res.json({ "success": "true" });
                 } else if (i == data.length - 1) {
                     continue;
                 } else {
