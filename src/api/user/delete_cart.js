@@ -3,11 +3,11 @@ const router = express.Router();
 const mongo = require('../../database/mongo_db');
 const passport = require('passport');
 
-router.delete('/delete_cart/:title', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.delete('/delete_cart', passport.authenticate('jwt', { session: false }), (req, res) => {
 
-    const title = req.params.title;
+    const id = req.query.id;
     const payload = { cpf: req.user[0].cpf };
-    mongo.deleteCartItem('user', payload, title)
+    mongo.deleteCartItem('user', payload, id)
         .then(data => res.status(200).json({"message":"item removed from cart successfully"}))
         .catch(err => res.json(err));
 });

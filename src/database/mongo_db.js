@@ -121,10 +121,10 @@ let deleteDocument = function (collectionName, filterConditon) {
   });
 };
 
-let deleteCartItem = function (collectionName, filterConditon, title) {
+let deleteCartItem = function (collectionName, filterConditon, id) {
   return new Promise((resolve, reject) => {
     const collection = myDB.collection(collectionName);
-    collection.findOneAndUpdate(filterConditon, { "$pull": { "cart": { "title": title } } }, { new: true })
+    collection.findOneAndUpdate(filterConditon, { "$pull": { "cart": { "id": id } } }, { new: true })
       .then(data => resolve(data))
       .catch(err => reject(err));
   })
