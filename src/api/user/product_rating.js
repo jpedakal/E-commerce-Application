@@ -8,15 +8,13 @@ router.post('/product_rating/:id', passport.authenticate('jwt', { session: false
     const payload = {
         rating: req.body.rating,
         review: req.body.review,
-        user: req.user[0].name,
+        user: req.user[0].firstName,
         create_ts: Date()
     };
     const filterCondition = { _id: req.params.id }
     mongo.findDocumentsById('product', filterCondition)
         .then(data => {
-            console.log(data);
             data.comments.push(payload);
-            console.log(data.comments);
             mongo.updateDocument('product', filterCondition, { comments: data.comments })
                 .then(item => res.json({ "message": "Added rating and review successfully" }))
                 .catch(err => res.json(err));
