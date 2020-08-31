@@ -12,6 +12,8 @@ router.post('/product_rating', passport.authenticate('jwt', { session: false }),
     const filterCondition = { cpf: req.user[0].cpf }
     mongo.findDocuments('user', filterCondition)
         .then(doc => {
-            
+
         })
 });
+
+module.exports = router;
