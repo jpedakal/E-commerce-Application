@@ -8,7 +8,7 @@ router.post('/update_user_info', passport.authenticate('jwt', { session: false }
     const payload = req.body;
     payload.update_ts = Date();
     mongo.updateDocument('user', filterConditon, payload)
-        .then(doc => res.json({ "message" : "User info updated successfully" }))
+        .then(doc => res.json({ "message": "User info updated successfully" }))
         .catch(err => res.json(err));
 });
 
