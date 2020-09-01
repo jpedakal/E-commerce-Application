@@ -27,4 +27,3 @@ router.post('/login', apiLimiter, (req, res) => {
 });
 
 module.exports = router;
-
