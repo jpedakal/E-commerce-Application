@@ -8,7 +8,7 @@ router.delete('/delete_cart', passport.authenticate('jwt', { session: false }), 
     const id = req.query.id;
     const payload = { cpf: req.user[0].cpf };
     mongo.deleteCartItem('user', payload, id)
-        .then(data => res.status(200).json({"message":"item removed from cart successfully"}))
+        .then(data => res.json({"message":"item removed from cart successfully"}))
         .catch(err => res.json(err));
 });
 

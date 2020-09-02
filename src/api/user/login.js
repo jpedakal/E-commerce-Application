@@ -9,7 +9,7 @@ router.post('/login', (req, res) => {
   };
 
   mongo.authentication('user', payload)
-    .then(data => res.status(200).json({"message":"Authentication Successful", "token": data}))
+    .then(data => res.json({"message":"Authentication Successful", "token": data}))
     .catch(err => res.json(err));
 });
 
