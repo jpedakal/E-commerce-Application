@@ -13,7 +13,7 @@ router.post('/add_to_cart', passport.authenticate('jwt', { session: false }), (r
       data[0].cart.push(payload);
       mongo.updateDocument('user', FilterCondition, { cart: data[0].cart })
         .then(item => res.json({ "message": "product added to cart successfully" }))
-        .catch(err => res.json(err));
+        .catch(err => res.json(errHandler(err)));
     });
 });
 
