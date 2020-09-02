@@ -13,7 +13,6 @@ module.exports = function (passport) {
       .then(user => {
         if (user) return done(null, user);
         else return done(null, false);
-      }).catch(err => errHandler(err));
-     // }).catch(err => done(err, false));
+      }).catch(err => done(err, false));
   }));
 };
