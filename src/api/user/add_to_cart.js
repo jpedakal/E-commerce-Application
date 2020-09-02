@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongo = require('../../database/mongo_db');
 const passport = require('passport');
+const errHandler = require('../../utils/exceptionHandler');
 
 router.post('/add_to_cart', passport.authenticate('jwt', { session: false }), (req, res) => {
 
