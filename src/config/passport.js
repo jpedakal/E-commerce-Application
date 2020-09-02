@@ -1,6 +1,7 @@
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const mongo = require('../database/mongo_db');
+const errHandler = require('../utils/exceptionHandler');
 const secret = 'WELCOME_1';
 
 module.exports = function (passport) {
@@ -12,6 +13,7 @@ module.exports = function (passport) {
       .then(user => {
         if (user) return done(null, user);
         else return done(null, false);
-      }).catch(err => done(err, false));
+      }).catch(err => errHandler(err));
+     // }).catch(err => done(err, false));
   }));
 };
