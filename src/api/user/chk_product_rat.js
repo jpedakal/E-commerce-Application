@@ -25,5 +25,4 @@ router.get('/product_rating', passport.authenticate('jwt', { session: false }), 
         .catch(err => res.json(err));
 });
 
-
 module.exports = router;
