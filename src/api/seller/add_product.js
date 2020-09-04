@@ -31,17 +31,19 @@ const mongo = require('../../database/mongo_db');
 router.post('/add_product', upload.single('productImage'), (req, res) => {
 
   const payload = {
-    create_ts:  Date(),
-    update_ts:  Date()
+    create_ts: Date(),
+    update_ts: Date()
   };
+
+  payload.specifications = req.body;
 
   // const productValidation = validation.selleradd_Product(payload);
   // if (Object.keys(productValidation).length !== 0) {
   //   res.status(404).json(productValidation);
   // } else {
-    mongo.insertDocuments('products', payload)
-      .then(data => res.json(data))
-      .catch(err => res.json(err));
+  mongo.insertDocuments('products', payload)
+    .then(data => res.json(data))
+    .catch(err => res.json(err));
   //}
 });
 
