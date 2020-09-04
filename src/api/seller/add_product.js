@@ -27,8 +27,8 @@ var upload = multer({
 });
 
 const mongo = require('../../database/mongo_db');
-
-router.post('/add_product', upload.single('productImage'), (req, res) => {
+//upload.single('productImage'),
+router.post('/add_product', (req, res) => {
 
   const payload = {
     create_ts: Date(),
