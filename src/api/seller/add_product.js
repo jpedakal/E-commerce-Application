@@ -28,14 +28,13 @@ var upload = multer({
 
 const mongo = require('../../database/mongo_db');
 
-router.post('/add_product', upload.single('productImage'), passport.authenticate('jwt', { session: false }), isAdmin, (req, res) => {
+router.post('/add_product', upload.single('productImage'),  (req, res) => {
 
   const payload = {
     category: req.body.category,
     brand: req.body.brand,
     model: req.body.model,
-    actual_price: req.body.actual_price,
-    offer_price: req.body.offer_price,
+    price: req.body.price,
     productImage: req.file.path,
     quantity: req.body.quantity,
     description: req.body.description,
