@@ -31,15 +31,8 @@ const mongo = require('../../database/mongo_db');
 router.post('/add_product', upload.single('productImage'), (req, res) => {
 
   const payload = {
-    category: req.body.category,
-    brand: req.body.brand,
-    model: req.body.model,
-    actual_price: req.body.actual_price,
-    offer_price: req.body.offer_price,
-    quantity: req.body.quantity,
-    description: req.body.description,
-    create_ts: new Date(),
-    update_ts: new Date()
+    create_ts:  Date(),
+    update_ts:  Date()
   };
 
   // const productValidation = validation.selleradd_Product(payload);
