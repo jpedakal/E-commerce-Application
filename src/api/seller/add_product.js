@@ -47,7 +47,7 @@ router.post('/add_product', upload.single('productImage'), (req, res) => {
   //   res.status(404).json(productValidation);
   // } else {
     mongo.insertDocuments('products', payload)
-      .then(data => res.status(200).json(data))
+      .then(data => res.json(data))
       .catch(err => res.json(err));
   //}
 });
