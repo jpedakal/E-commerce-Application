@@ -42,14 +42,14 @@ router.post('/add_product', upload.single('productImage'), (req, res) => {
     update_ts: new Date()
   };
 
-  const productValidation = validation.selleradd_Product(payload);
-  if (Object.keys(productValidation).length !== 0) {
-    res.status(404).json(productValidation);
-  } else {
+  // const productValidation = validation.selleradd_Product(payload);
+  // if (Object.keys(productValidation).length !== 0) {
+  //   res.status(404).json(productValidation);
+  // } else {
     mongo.insertDocuments('products', payload)
       .then(data => res.status(200).json(data))
       .catch(err => res.json(err));
-  }
+  //}
 });
 
 module.exports = router;
