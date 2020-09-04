@@ -36,10 +36,8 @@ router.post('/add_product', upload.single('productImage'), (req, res) => {
     model: req.body.model,
     actual_price: req.body.actual_price,
     offer_price: req.body.offer_price,
-    productImage: req.file.path,
     quantity: req.body.quantity,
     description: req.body.description,
-    create_by: req.user[0].mobile,
     create_ts: new Date(),
     update_ts: new Date()
   };
