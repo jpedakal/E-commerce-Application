@@ -24,3 +24,4 @@ router.post('/update_pwd', passport.authenticate('jwt', { session: false }), (re
 });
 
 module.exports = router;
+
