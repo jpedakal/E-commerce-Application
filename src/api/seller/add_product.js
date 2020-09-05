@@ -48,4 +48,3 @@ router.post('/add_product', (req, res) => {
 });
 
 module.exports = router;
-
