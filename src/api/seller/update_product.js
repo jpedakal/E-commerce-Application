@@ -19,4 +19,5 @@ router.post('/update_product', passport.authenticate('jwt', { session: false }),
     .catch(err => res.json(err));
 });
 
+
 module.exports = router;
