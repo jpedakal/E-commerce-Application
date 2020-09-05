@@ -20,3 +20,4 @@ router.post('/update_product', passport.authenticate('jwt', { session: false }),
 });
 
 module.exports = router;
+
