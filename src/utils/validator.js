@@ -83,5 +83,6 @@ exports.sellerDelete_Product = function (input) {
   if (validator.isEmpty(input.id.trim())) {
     errors.id = 'Product Id required';
   }
+  
   return errors;
 };
