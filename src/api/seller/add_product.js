@@ -42,7 +42,7 @@ router.post('/add_product', (req, res) => {
   //   res.status(404).json(productValidation);
   // } else {
   mongo.insertDocuments('products', payload)
-    .then(data => res.json(data))
+    .then(data => res.json({ "message": "product added successfully" }))
     .catch(err => res.json(err));
   //}
 });
